@@ -1,8 +1,8 @@
-const express = require('express');
-const cors = require('cors');
-const mongoose = require('mongoose');
+const express = require("express");
+const cors = require("cors");
+const mongoose = require("mongoose");
 
-require('dotenv').config();
+require("dotenv").config();
 
 const app = express();
 const port = process.env.port || 4200;
@@ -16,10 +16,6 @@ app.use(express.json());
 // connection.once('open', () =>
 // { console.log("MongoDB database connection established successfully")});
 
-app.listen(port, () =>
-    {
-        console.log(`Server is running on port: ${port}`);
-    });
-
-    
-    
+app.listen(port, () => {
+  console.log(`Server is running on port: ${port}`);
+});
