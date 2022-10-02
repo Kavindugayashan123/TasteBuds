@@ -7,8 +7,11 @@ const logger = require("./middleware/logger");
 const app = express();
 const PORT = 3000;
 
+
+
+
 mongoose
-  .connect("mongodb://localhost:27017/testebuds")
+  .connect("mongodb+srv://DbUser:DbUser@cluster0.fj0x6.mongodb.net/Cluster0?retryWrites=true&w=majority")
   .then(() => {
     console.log("Connected to DB succsessfully!");
   })
