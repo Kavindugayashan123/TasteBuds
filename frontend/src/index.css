@@ -1,7 +1,17 @@
+@font-face {
+  font-family: myFont;
+  src: url(../public/fonts/Acme-Regular.ttf);
+}
+
+
 * {
   margin: 0;
   padding: 0;
   box-sizing: border-box;
+}
+
+body{
+  font-family: myFont;
 }
 
 a{

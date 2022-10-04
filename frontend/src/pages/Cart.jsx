@@ -1,11 +1,10 @@
 import React from 'react'
 import Navbar from '../components/Navbar'
 
-export const Home = () => {
+const Cart = () => {
   return (
-    <div>
-        <Navbar/>
-        Home
-    </div>
+    <div><Navbar />Cart</div>
   )
 }
+
+export default Cart
