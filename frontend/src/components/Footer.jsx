@@ -42,7 +42,7 @@ const Footer = () => {
           </ul>
         </div>
         <div className="f-col">
-            <h2>Stay in taouch with us</h2>
+            <h2>Stay in touch with us</h2>
           <div className="socials">
             <a href="/">
               <img src="/images/social/facebook.png" alt=""></img>
