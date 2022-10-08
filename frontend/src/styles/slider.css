@@ -1,0 +1,60 @@
+.s-container {
+  position: relative;
+  width: 100%;
+  height: 100vh;
+  display: flex;
+  overflow: hidden;
+}
+
+.s-arrow {
+  position: absolute;
+  width: 30px;
+  height: 30px;
+  background-color: rgba(241, 210, 210, 0.11);
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  border-radius: 50%;
+  top: 0;
+  bottom: 0;
+  margin: auto;
+  cursor: pointer;
+  transition: all 0.5s;
+  z-index: 2;
+}
+.s-arrow.left {
+  left: 15px;
+}
+.s-arrow.right {
+  right: 15px;
+}
+.s-arrow:hover svg {
+  color: rgba(151, 126, 126, 0.493);
+}
+
+.s-arrow svg {
+  font-size: 20px;
+}
+
+.wrapper {
+  display: flex;
+  height: 100%;
+  transform: translateX(-100vw);
+  transition: all 1.5s ease;
+}
+
+.slide {
+  width: 100vw;
+  height: 100vh;
+  display: flex;
+  align-items: center;
+}
+.img-container {
+  height: 100%;
+  width: 100%;
+}
+.s-img {
+  height: 100%;
+  width: 100%;
+  object-fit: cover;
+}
