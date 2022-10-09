@@ -1,0 +1,20 @@
+.o-row{
+    min-height: 100vh;
+    margin: 50px 0;
+    display: flex;
+    padding: 0 10px;
+}
+
+.o-col:first-child h2{
+    margin-bottom: 20px;
+    letter-spacing: 2px;
+    text-transform: uppercase;
+}
+
+.o-col:first-child{
+    flex: 1;
+}
+
+.o-col:last-child{
+    flex: 4;
+}

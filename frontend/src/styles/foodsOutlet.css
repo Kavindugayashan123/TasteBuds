@@ -1,0 +1,84 @@
+.outlet-row:first-child{
+    display: flex;
+}
+
+.outlet-col:first-child{
+    flex: 1;
+    display: flex;
+    flex-direction: column;
+}
+
+.outlet-col:first h2{
+    letter-spacing: 2px;
+    margin-bottom: 20px;
+}
+
+.outlet-col:last-child{
+    flex: 5;
+}
+
+.outlet-foods{
+    display: flex;
+    justify-content: center;
+    flex-wrap: wrap;
+    margin-bottom: 30px;
+}
+
+.outlet-btn{
+    width: max-content;
+    background-color: transparent;
+    margin-bottom: 10px;
+    font-weight: bold;
+}
+
+.outlet-btn svg{
+    transition: all 0.5s;
+}
+
+.outlet-btn:hover svg{
+    color: red;
+    margin-left:  5px; 
+}
+
+.outlet-pagination{
+    display: flex;
+    justify-content: center;
+}
+
+.paginationBttns{
+    width: 80%;
+    height: 40px;
+    list-style: none;
+    display: flex;
+    justify-content: center;
+}
+
+.paginationBttns a {
+    padding: 5px 10px;
+    margin: 8px;
+    border-radius: 5px;
+    border: 1px solid black;
+    color: black;
+    cursor: pointer;
+}
+
+.paginationBttns a:hover{
+    color: bisque;
+    background-color: red;
+}
+
+.paginationActive a{
+    color: aliceblue;
+    background-color: red;
+}
+
+.paginationDisabled a{
+  background-color: darkgrey;
+  color: darkgrey;
+}
+
+.paginationDisabled:hover a {
+    background-color: darkgrey;
+    color: darkgrey;
+}
+
