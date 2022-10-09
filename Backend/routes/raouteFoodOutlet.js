@@ -54,6 +54,9 @@ router.put("/:outletId", async (req, res) => {
     outlet.set({
       name: req.body.name,
       address: req.body.address,
+      rate: req.body.rate,
+      description: req.body.description,
+      location: req.body.location,
       imgUrl: req.body.imgUrl,
     });
     outlet = await outlet.save();
