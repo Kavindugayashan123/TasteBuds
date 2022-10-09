@@ -8,6 +8,7 @@ const foodSchema = new mongoose.Schema({
   },
   type: String,
   description: String,
+  category: String,
   price: Number,
   imgUrl: String,
   outletId:String,
