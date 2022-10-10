@@ -4,7 +4,7 @@ import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { Link } from "react-router-dom";
 import "../styles/foodOutlet.css";
 
-const WhistListOutlet = () => {
+const WhistListOutlet = ({ item }) => {
   return (
     <div className="fo-card">
       <div className="card-header">
@@ -17,12 +17,7 @@ const WhistListOutlet = () => {
         <span>{item.address}</span>
       </div>
       <div className="card-footer">
-        <button
-          onClick={() => {
-            addToWhistList();
-            ChangeColor();
-          }}
-        >
+        <button onClick={() => {}}>
           <FontAwesomeIcon icon={faHeart} />
         </button>
         <button>

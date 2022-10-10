@@ -1,30 +1,33 @@
-import React from "react";
-import { faChevronRight } from "@fortawesome/free-solid-svg-icons";
-import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
+import React, { useContext } from "react";
 import { useEffect } from "react";
 import { useState } from "react";
-import { category } from "../data";
 import "../styles/foodsOutlet.css";
-import FoodOutlet from "./FoodOutlet";
 import axios from "axios";
 import ReactPaginate from "react-paginate";
+import WhistListOutlet from "./WhistListOutlet";
+import { Store } from "../Store";
 
 const WhistList = () => {
-  var IsEnableFilter = false;
   const [whistList, setwhistList] = useState([]);
-  const [data, setData] = useState(category);
+  //const [data, setData] = useState(category);
 
   const [pageNumber, setPageNumber] = useState(0);
   const outletPerPage = 4;
   const pageVisited = pageNumber * outletPerPage;
   const displayProducts = whistList
     .slice(pageVisited, pageVisited + outletPerPage)
-    .map((item) => <FoodOutlet item={item} key={item._id} />);
+    .map((item) => <WhistListOutlet item={item} key={item._id} />);
   const pageCount = Math.ceil(whistList.length / outletPerPage);
   const changePage = ({ selected }) => {
     setPageNumber(selected);
   };
-  let userID = "11233324";
+  let userID = "001112244";
+
+  const { state, dispatch: ctxDispatch } = useContext(Store);
+
+  const {
+    wish: { wishItems },
+  } = state;
 
   useEffect(() => {
     const fetchData = async () => {
@@ -36,12 +39,15 @@ const WhistList = () => {
 
   return (
     <div className="outlet-container">
+      <h2>Your Whist List...</h2>
       <div className="outlet-row">
         <div className="outlet-col">
           <div className="outlet-foods">
-            {/* {food.map((item) => (
-                            <FoodOutlet item={item} key={item._id} />
-                        ))} */}
+            {/* {wishItems.length === 0 ? (
+              <h3 className="info">Your Wish List is Empty.</h3>
+            ) : (
+              { displayProducts }
+            )} */}
             {displayProducts}
           </div>
           <div className="outlet-pagination">

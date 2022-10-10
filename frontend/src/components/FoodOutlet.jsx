@@ -3,17 +3,36 @@ import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { Link } from "react-router-dom";
 import "../styles/foodOutlet.css";
 import axios from "axios";
+import { useContext } from "react";
+import { Store } from "../Store";
 
 const FoodOutlet = ({ item }) => {
+  const { state, dispatch: ctxDispatch } = useContext(Store);
+  const { wish } = state;
 
-  const addToWhistList = () => {
-    const fetchData = async () => {
-      const data = await axios.post("/api/wishList/addItems", {
-        userId: "11233324",
-        outLetId: item._id,
-      });
-    };
-    fetchData();
+  const addToWishHandler = () => {
+    const existItem = wish.wishItems.find((x) => x._id === item._id);
+    const quantity = existItem ? existItem.quantity : 1;
+
+    if (existItem) {
+      window.alert("Outlet is already in whistList");
+      return;
+    } else {
+      const addToWhistList = () => {
+        const fetchData = async () => {
+          const data = await axios.post("/api/wishList/addItems", {
+            userId: "001112244",
+            outLetId: item._id,
+          });
+        };
+        fetchData();
+      };
+      addToWhistList();
+    }
+    ctxDispatch({
+      type: "WISH_ADD_ITEM",
+      payload: { ...item, quantity },
+    });
   };
 
   const ChangeColor = () => {
@@ -33,8 +52,9 @@ const FoodOutlet = ({ item }) => {
       <div className="card-footer">
         <button
           onClick={() => {
-            addToWhistList();
-            ChangeColor();
+            // addToWhistList();
+            addToWishHandler();
+            //ChangeColor();
           }}
         >
           <FontAwesomeIcon icon={faHeart} />

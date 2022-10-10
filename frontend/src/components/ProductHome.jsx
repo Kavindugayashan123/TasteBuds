@@ -2,15 +2,26 @@ import {
   faBagShopping,
   faEye,
   faHeart,
-  faShoppingBag,    
+  faShoppingBag,
 } from "@fortawesome/free-solid-svg-icons";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import React, { useState } from "react";
+import { useContext } from "react";
+import { Store } from "../Store";
 import "../styles/productHome.css";
 import Quick from "./Quick";
 
 const ProductHome = ({ item }) => {
   const [open, setOpen] = useState(false);
+
+  const { state, dispatch: ctxDispatch } = useContext(Store);
+
+  // const addToWishHandler = () => {
+  //   ctxDispatch({
+  //     type: "WISH_ADD_ITEM",
+  //     payload: { ...item, quantity: 1 },
+  //   });
+  // };
 
   return (
     <div className="hp-card">

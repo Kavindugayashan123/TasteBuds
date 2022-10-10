@@ -1,9 +1,16 @@
-import React from "react";
+import React, { useContext } from "react";
 import Footer from "../components/Footer";
 import Navbar from "../components/Navbar";
 import WhistList from "../components/WhistList";
+import { Store } from "../Store";
 
 const Wish = () => {
+  const { state, dispatch: ctxDispatch } = useContext(Store);
+
+  const {
+    wish: { wishItems },
+  } = state;
+
   return (
     <div>
       <Navbar />

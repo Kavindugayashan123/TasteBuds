@@ -1,4 +1,4 @@
-import React from "react";
+import React, { useContext } from "react";
 import { useEffect } from "react";
 import { useState } from "react";
 import Footer from "../components/Footer";
@@ -15,10 +15,13 @@ import {
   CardContent,
   CardActions,
 } from "@material-ui/core";
+import { TransformWrapper, TransformComponent } from "react-zoom-pan-pinch";
+import { Store } from "../Store";
 
 const OutletScreenCard = ({ foodoutlet }) => {
   const [selectedImage, setSelectedImage] = useState("");
   const [outletFoods, setOutletFood] = useState([]);
+  const { state, dispatch: ctxDispatch } = useContext(Store);
 
   useEffect(() => {
     const fetchData = async () => {
@@ -40,10 +43,14 @@ const OutletScreenCard = ({ foodoutlet }) => {
           <div className="screen-col">
             <div className="screen-images">
               <div className="screen-top">
-                <img
-                  src={selectedImage || foodoutlet.imgUrl}
-                  alt={foodoutlet.name}
-                />
+                <TransformWrapper>
+                  <TransformComponent>
+                    <img
+                      src={selectedImage || foodoutlet.imgUrl}
+                      alt={foodoutlet.name}
+                    />
+                  </TransformComponent>
+                </TransformWrapper>
               </div>
               <div className="screen-bottom">
                 <img
@@ -73,7 +80,7 @@ const OutletScreenCard = ({ foodoutlet }) => {
               <button className="wish">Add to Wish</button>
             </div>
 
-            <div aria-rowcount>
+            {/* <div aria-rowcount>
               <div className="outlet-foods">
                 {outletFoods.slice(0, 8).map((item) => (
                   <ProductHome item={item} key={item._id} />
@@ -105,7 +112,7 @@ const OutletScreenCard = ({ foodoutlet }) => {
                   </Button>
                 </CardActions>
               </Card>
-            </div>
+            </div> */}
           </div>
         </div>
       </div>
