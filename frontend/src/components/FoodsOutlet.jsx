@@ -1,7 +1,7 @@
 import { faChevronRight } from "@fortawesome/free-solid-svg-icons";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { useEffect } from "react";
-import { useState } from "react"
+import { useState } from "react";
 import { category } from "../data"
 import '../styles/foodsOutlet.css'
 import FoodOutlet from "./FoodOutlet";

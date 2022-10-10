@@ -2,6 +2,7 @@ const express = require("express");
 const mongoose = require("mongoose");
 const outletRouter = require("./routes/raouteFoodOutlet");
 const foodRouter = require("./routes/raouteFood");
+const wishList = require("./routes/wishList");
 const authencator = require("./middleware/authenticator");
 const logger = require("./middleware/logger");
 const app = express();
@@ -22,6 +23,7 @@ app.use(authencator);
 app.use(logger);
 app.use("/api/outlets",outletRouter)
 app.use("/api/foods",foodRouter)
+app.use("/api/wishList",wishList)
 //app.use("/api/outlets", outletRouter);
 
 

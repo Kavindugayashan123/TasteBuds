@@ -1,24 +1,6 @@
-import { faHeart, faShoppingBag } from "@fortawesome/free-solid-svg-icons";
-import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
-import { Link } from "react-router-dom";
-import "../styles/foodOutlet.css";
-import axios from "axios";
+import React from "react";
 
-const FoodOutlet = ({ item }) => {
-
-  const addToWhistList = () => {
-    const fetchData = async () => {
-      const data = await axios.post("/api/wishList/addItems", {
-        userId: "11233324",
-        outLetId: item._id,
-      });
-    };
-    fetchData();
-  };
-
-  const ChangeColor = () => {
-    // setwhistListCount(whistListCount + 1);
-  };
+const WhistListOutlet = () => {
   return (
     <div className="fo-card">
       <div className="card-header">
@@ -47,4 +29,4 @@ const FoodOutlet = ({ item }) => {
   );
 };
 
-export default FoodOutlet;
+export default WhistListOutlet;
