@@ -74,4 +74,17 @@ router.delete("/:foodId", async (req, res) => {
   }
 });
 
+router.get("/getFoodByOutletId/:outletId",async (req,res)=>{
+  try{
+
+    const outletId  =req.params['outletId']
+    const foods = await Food.find();
+    const foodsByoutletId = foods.filter((food)=> food.outletId===outletId)
+    res.send(foodsByoutletId);
+
+  } catch (err) {
+    return res.status(404).send(`cannot find foods ${err.message}`);
+  }
+})
+
 module.exports = router;

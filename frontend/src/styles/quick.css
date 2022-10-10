@@ -31,6 +31,25 @@
     justify-content: center;
 }
 
+.card-bottom{
+    display: flex;
+    justify-content: space-around;
+}
+
+.card-bottom img {
+    width: 75px;
+    border-radius: 2px;
+    box-shadow: 0 0 5px black;
+    padding: 2px;
+    cursor: pointer;
+    transition: all 0.5s;
+}
+
+.card-bottom img:hover {
+    transform: scale(1.02);
+}
+
+
 .div{
     margin-bottom: 60px;
 }
@@ -97,7 +116,8 @@ font-size: 30px;
     background-color: #fff;
     color: yellow;
 }
-.wish:hover{
+
+.wish:hover {
 background-color: #fff;
 color: blue;
 }
