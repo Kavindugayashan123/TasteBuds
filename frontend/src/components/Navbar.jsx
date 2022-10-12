@@ -1,4 +1,4 @@
-import React from "react";
+import React, { useState, useEffect } from "react";
 import "../styles/navbar.css";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import {
@@ -16,6 +16,14 @@ import { useContext } from "react";
 const Navbar = () => {
   const { state } = useContext(Store);
   const { wish } = state;
+import { readCart } from "../services/cartService";
+
+const Navbar = () => {
+  const [cartItemCount, setCartItemCount] = useState(0);
+
+  useEffect(() => {
+    setCartItemCount(readCart().length);
+  }, []);
 
   return (
     <div className="n-container">
@@ -67,7 +75,7 @@ const Navbar = () => {
             <a href="/cart">
               <span>
                 <FontAwesomeIcon icon={faShoppingBag} />{" "}
-                <span className="totalItems">0</span>
+                <span className="totalItems">{cartItemCount}</span>
               </span>{" "}
             </a>
           </div>
