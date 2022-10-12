@@ -1,8 +1,9 @@
 import React from "react";
 import Navbar from "../components/Navbar";
-import "../styles/outlet.css"
-import Footer from '../components/Footer';
+import "../styles/outlet.css";
+import Footer from "../components/Footer";
 import FoodsOutlet from "../components/FoodsOutlet";
+import Map from "./Map";
 
 const Outlet = () => {
   return (
@@ -11,9 +12,10 @@ const Outlet = () => {
       <div className="o-row">
         <div className="o-col">
           <FoodsOutlet />
+          <Map />
         </div>
       </div>
-      <Footer/>
+      <Footer />
     </div>
   );
 };

@@ -1,4 +1,4 @@
-import React from "react";
+import React, { useContext } from "react";
 import { useEffect } from "react";
 import { useState } from "react";
 import Footer from "../components/Footer";
@@ -6,25 +6,18 @@ import Navbar from "../components/Navbar";
 import "../styles/outletScreenCard.css";
 import axios from "axios";
 import ProductHome from "../components/ProductHome";
-import {
-  Button,
-  Card,
-  Typography,
-  CardActionArea,
-  CardMedia,
-  CardContent,
-  CardActions,
-} from "@material-ui/core";
+import { Button, Card, Typography, CardActionArea, CardMedia, CardContent, CardActions } from "@material-ui/core";
+import { TransformWrapper, TransformComponent } from "react-zoom-pan-pinch";
+import { Store } from "../Store";
 
 const OutletScreenCard = ({ foodoutlet }) => {
   const [selectedImage, setSelectedImage] = useState("");
   const [outletFoods, setOutletFood] = useState([]);
+  const { state, dispatch: ctxDispatch } = useContext(Store);
 
   useEffect(() => {
     const fetchData = async () => {
-      const result = await axios.get(
-        `/api/foods/getFoodByOutletId/${foodoutlet._id}`
-      );
+      const result = await axios.get(`/api/foods/getFoodByOutletId/${foodoutlet._id}`);
       setOutletFood(result.data);
     };
     fetchData();
@@ -40,10 +33,11 @@ const OutletScreenCard = ({ foodoutlet }) => {
           <div className="screen-col">
             <div className="screen-images">
               <div className="screen-top">
-                <img
-                  src={selectedImage || foodoutlet.imgUrl}
-                  alt={foodoutlet.name}
-                />
+                <TransformWrapper>
+                  <TransformComponent>
+                    <img src={selectedImage || foodoutlet.imgUrl} alt={foodoutlet.name} />
+                  </TransformComponent>
+                </TransformWrapper>
               </div>
               <div className="screen-bottom">
                 <img
@@ -62,7 +56,7 @@ const OutletScreenCard = ({ foodoutlet }) => {
               <p className="category">{foodoutlet.address}</p>
             </div>
             <div className="second-div div">
-              <span className="price">Price: ${outletFoods.price}</span>
+              <span className="price">Rate: {foodoutlet.rate}</span>
               <div className="quantity">Quantity: 1</div>
             </div>
             <div className="third-div div">
@@ -72,15 +66,19 @@ const OutletScreenCard = ({ foodoutlet }) => {
               <button className="cart">Add to Cart</button>
               <button className="wish">Add to Wish</button>
             </div>
+          </div>
+        </div>
+      </div>
+      <div className="screen-col">
+        <div className="outlet-card">
+          {outletFoods.slice(0, 8).map((item) => (
+            <ProductHome item={item} key={item._id} />
+          ))}
+        </div>
+      </div>
 
-            <div aria-rowcount>
-              <div className="outlet-foods">
-                {outletFoods.slice(0, 8).map((item) => (
-                  <ProductHome item={item} key={item._id} />
-                ))}
-              </div>
-
-              <Card sx={{ maxWidth: 345 }}>
+      {/*  <div aria-rowcount>
+               <Card sx={{ maxWidth: 345 }}>
                 <CardActionArea>
                   <CardMedia
                     component="img"
@@ -105,10 +103,7 @@ const OutletScreenCard = ({ foodoutlet }) => {
                   </Button>
                 </CardActions>
               </Card>
-            </div>
-          </div>
-        </div>
-      </div>
+            </div> */}
 
       <Footer />
     </>
