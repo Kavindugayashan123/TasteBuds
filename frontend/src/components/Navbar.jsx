@@ -1,4 +1,4 @@
-import React from "react";
+import React, { useState, useEffect } from "react";
 import "../styles/navbar.css";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import {
@@ -8,8 +8,15 @@ import {
   faUser,
 } from "@fortawesome/free-solid-svg-icons";
 import { NavLink } from "react-router-dom";
+import { readCart } from "../services/cartService";
 
 const Navbar = () => {
+  const [cartItemCount, setCartItemCount] = useState(0);
+
+  useEffect(() => {
+    setCartItemCount(readCart().length);
+  }, []);
+
   return (
     <div className="n-container">
       <div className="n-row">
@@ -58,7 +65,7 @@ const Navbar = () => {
             <a href="/cart">
               <span>
                 <FontAwesomeIcon icon={faShoppingBag} />{" "}
-                <span className="totalItems">0</span>
+                <span className="totalItems">{cartItemCount}</span>
               </span>{" "}
             </a>
           </div>

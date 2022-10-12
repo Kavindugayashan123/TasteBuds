@@ -1,10 +1,28 @@
-import React from 'react'
-import Navbar from '../components/Navbar'
+import React, { useEffect, useState } from "react";
+import ProductHome from "../components/ProductHome";
+import Navbar from "../components/Navbar";
+import { readCart } from "../services/cartService";
 
 const Cart = () => {
-  return (
-    <div><Navbar />Cart</div>
-  )
-}
+  const [foods, setFoods] = useState([]);
 
-export default Cart
+  useEffect(() => {
+    setFoods(readCart());
+  }, []);
+
+  return (
+    <div>
+      <Navbar />
+      <div className="hps-container">
+        <h2>Cart</h2>
+        <div className="hps-row">
+          {foods.map((item, index) => (
+            <ProductHome item={item} isCart={true} key={index} index={index} />
+          ))}
+        </div>
+      </div>
+    </div>
+  );
+};
+
+export default Cart;
