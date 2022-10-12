@@ -1,5 +1,6 @@
 .f-container {
   padding: 20px 15px;
+  background-color: rgba(0, 0, 0, 0.064);
 }
 .f-row {
   display: flex;
