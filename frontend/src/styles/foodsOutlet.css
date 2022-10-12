@@ -88,3 +88,20 @@
     letter-spacing: 3px;
     text-transform: uppercase;
 }
+
+.card-body {
+    text-align: center;
+    padding: 10px 5px 17px;
+}
+
+.wish-desc {
+    text-align: center;
+    letter-spacing: 2px;
+    background-color: #744848;
+    padding: 5px 10px;
+    color: aliceblue;
+}
+
+.Remove-Btn{
+    color: red !important;
+}
