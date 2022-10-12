@@ -1,3 +1,4 @@
+const e = require("express");
 const express = require("express");
 const Food = require("../models/food");
 const router = express.Router();
@@ -39,7 +40,7 @@ router.get("/:foodId", async (req, res) => {
   try {
     let food = await Food.findById(reqId);
 
-    if (food == null) {
+    if (food.length == []) {
       return res.send(`Not availbe Food this Id`);
     } else {
       res.send(food);
@@ -49,7 +50,20 @@ router.get("/:foodId", async (req, res) => {
   }
 });
 
+router.get("/outlet/:outletId", async (req, res) => {
+  let outId = req.params.outletId;
 
+  try {
+    let outFood = await Food.find({ outletId: outId });
+    if (outFood.length == []) {
+      return res.send(`Not availbe Foods in this OutletId`);
+    } else {
+      res.send(outFood);
+    }
+  } catch (err) {
+    return res.status(404).send(`Error : ${err.message}`);
+  }
+});
 
 router.put("/:foodId", async (req, res) => {
   if (!req.body.name || !req.body.type || !req.body.imgUrl) {
