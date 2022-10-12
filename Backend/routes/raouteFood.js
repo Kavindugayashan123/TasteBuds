@@ -13,6 +13,7 @@ router.post("/", async (req, res) => {
     type: req.body.type,
     rate: req.body.rate,
     description: req.body.description,
+    category: req.body.category,
     price: req.body.price,
     imgUrl: req.body.imgUrl,
     outletId: req.body.outletId,
@@ -59,6 +60,21 @@ router.get("/outlet/:outletId", async (req, res) => {
       return res.send(`Not availbe Foods in this OutletId`);
     } else {
       res.send(outFood);
+    }
+  } catch (err) {
+    return res.status(404).send(`Error : ${err.message}`);
+  }
+});
+
+router.get("/foodType/:category", async (req, res) => {
+  let foodCat = req.params.category;
+
+  try {
+    let foodCategory = await Food.find({ category: foodCat });
+    if (foodCategory.length == []) {
+      return res.send(`Not availbe Foods in this Category`);
+    } else {
+      res.send(foodCategory);
     }
   } catch (err) {
     return res.status(404).send(`Error : ${err.message}`);

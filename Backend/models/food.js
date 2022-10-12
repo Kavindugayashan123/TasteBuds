@@ -11,10 +11,16 @@ const foodSchema = new mongoose.Schema({
     required: true,
   },
   description: String,
-  category: String,
+  category: {
+    type: String,
+    required: true,
+  },
   price: Number,
   imgUrl: String,
-  outletId: String,
+  outletId: {
+    type: String,
+    required: true,
+  },
 });
 const Food = mongoose.model("Food", foodSchema);
 module.exports = Food;

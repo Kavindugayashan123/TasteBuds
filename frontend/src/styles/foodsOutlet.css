@@ -75,12 +75,12 @@
 }
 
 .paginationDisabled a{
-  background-color: darkgrey;
+  background-color: transparent;
   color: darkgrey;
 }
 
 .paginationDisabled:hover a {
-    background-color: darkgrey;
+    background-color: red;
     color: darkgrey;
 }
 

@@ -6,8 +6,15 @@ import Navbar from "../components/Navbar";
 import "../styles/outletScreenCard.css";
 import axios from "axios";
 import ProductHome from "../components/ProductHome";
-import { Button, Card, Typography, CardActionArea, CardMedia, CardContent, CardActions } from "@material-ui/core";
-import { TransformWrapper, TransformComponent } from "react-zoom-pan-pinch";
+import {
+  Button,
+  Card,
+  Typography,
+  CardActionArea,
+  CardMedia,
+  CardContent,
+  CardActions,
+} from "@material-ui/core";
 import { Store } from "../Store";
 
 const OutletScreenCard = ({ foodoutlet }) => {
@@ -17,7 +24,9 @@ const OutletScreenCard = ({ foodoutlet }) => {
 
   useEffect(() => {
     const fetchData = async () => {
-      const result = await axios.get(`/api/foods/getFoodByOutletId/${foodoutlet._id}`);
+      const result = await axios.get(
+        `/api/foods/getFoodByOutletId/${foodoutlet._id}`
+      );
       setOutletFood(result.data);
     };
     fetchData();
@@ -33,11 +42,10 @@ const OutletScreenCard = ({ foodoutlet }) => {
           <div className="screen-col">
             <div className="screen-images">
               <div className="screen-top">
-                <TransformWrapper>
-                  <TransformComponent>
-                    <img src={selectedImage || foodoutlet.imgUrl} alt={foodoutlet.name} />
-                  </TransformComponent>
-                </TransformWrapper>
+                <img
+                  src={selectedImage || foodoutlet.imgUrl}
+                  alt={foodoutlet.name}
+                />
               </div>
               <div className="screen-bottom">
                 <img

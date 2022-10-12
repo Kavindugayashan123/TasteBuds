@@ -6,7 +6,7 @@ import axios from "axios";
 
 const ProductsHome = () => {
   const [foods, setFoods] = useState([]);
-  const [foods, setFoods] = useState([]);
+
   //const [outlets, setOutlets] = useState([]);
 
   useEffect(() => {

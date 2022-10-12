@@ -59,6 +59,30 @@ const FoodsOutlet = () => {
     fetchData();
   };
 
+  //get dinner foods
+  const dinnerFoods = () => {
+    const fetchDFoods = async () => {
+      const result = await axios.get("/api/foods/foodtype/dinner");
+      setFood(result.data);
+    };
+    fetchDFoods();
+  };
+  //get breakfast Foods
+  const breakfastFoods = () => {
+    const fetchBFoods = async () => {
+      const result = await axios.get("/api/foods/foodtype/breakfast");
+      setFood(result.data);
+    };
+    fetchBFoods();
+  };
+  //get lunch Foods
+  const lunchFoods = () => {
+    const fetchLFoods = async () => {
+      const result = await axios.get("/api/foods/foodtype/lunch");
+      setFood(result.data);
+    };
+    fetchLFoods();
+  };
   return (
     <div className="outlet-container">
       <div className="outlet-row">
@@ -71,16 +95,45 @@ const FoodsOutlet = () => {
               AllData();
             }}
           >
-            All <FontAwesomeIcon icon={faChevronRight} />
+            Outlets
+            <FontAwesomeIcon icon={faChevronRight} />
           </button>
-          {category.map((item) => (
+          <button
+            className="outlet-btn"
+            onClick={() => {
+              breakfastFoods();
+            }}
+          >
+            Breakfast
+            <FontAwesomeIcon icon={faChevronRight} />
+          </button>
+
+          <button
+            className="outlet-btn"
+            onClick={() => {
+              lunchFoods();
+            }}
+          >
+            Lunch
+            <FontAwesomeIcon icon={faChevronRight} />
+          </button>
+          <button
+            className="outlet-btn"
+            onClick={() => {
+              dinnerFoods();
+            }}
+          >
+            Dinner
+            <FontAwesomeIcon icon={faChevronRight} />
+          </button>
+          {/* {category.map((item) => (
             <button
               className="outlet-btn"
               onClick={() => filterResult(item.title, (IsEnableFilter = true))}
             >
               {item.title} <FontAwesomeIcon icon={faChevronRight} />{" "}
             </button>
-          ))}
+          ))} */}
         </div>
         <div className="outlet-col">
           <div className="outlet-foods">
