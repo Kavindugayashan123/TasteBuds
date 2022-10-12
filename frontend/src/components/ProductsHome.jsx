@@ -13,7 +13,7 @@ const ProductsHome = () => {
     const fetchData = async () => {
       const result = await axios.get("/api/foods");
       setFoods(result.data);
-    };;
+    };;;
     fetchData();
   }, []);
 
