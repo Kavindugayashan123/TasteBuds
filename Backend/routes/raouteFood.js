@@ -1,6 +1,5 @@
 const express = require("express");
 const Food = require("../models/food");
-const Outlet = require("../models/food");
 const router = express.Router();
 
 router.post("/", async (req, res) => {
@@ -28,8 +27,6 @@ router.post("/", async (req, res) => {
 router.get("/", async (req, res) => {
   try {
     let foods = await Food.find();
-    //let outlets = await Outlet.find(property: true).sort(name: "asc");
-    //(dob: {$gt: 1900})
     res.send(foods);
   } catch (err) {
     return res.status(500).send(`Error: ${err.message}`);
@@ -41,11 +38,18 @@ router.get("/:foodId", async (req, res) => {
 
   try {
     let food = await Food.findById(reqId);
-    res.send(food);
+
+    if (food == null) {
+      return res.send(`Not availbe Food this Id`);
+    } else {
+      res.send(food);
+    }
   } catch (err) {
-    return res.status(404).send(`Not availbe this Id: ${err.message}`);
+    return res.status(404).send(`Error : ${err.message}`);
   }
 });
+
+
 
 router.put("/:foodId", async (req, res) => {
   if (!req.body.name || !req.body.type || !req.body.imgUrl) {
@@ -74,17 +78,15 @@ router.delete("/:foodId", async (req, res) => {
   }
 });
 
-router.get("/getFoodByOutletId/:outletId",async (req,res)=>{
-  try{
-
-    const outletId  =req.params['outletId']
+router.get("/getFoodByOutletId/:outletId", async (req, res) => {
+  try {
+    const outletId = req.params["outletId"];
     const foods = await Food.find();
-    const foodsByoutletId = foods.filter((food)=> food.outletId===outletId)
+    const foodsByoutletId = foods.filter((food) => food.outletId === outletId);
     res.send(foodsByoutletId);
-
   } catch (err) {
     return res.status(404).send(`cannot find foods ${err.message}`);
   }
-})
+});
 
 module.exports = router;

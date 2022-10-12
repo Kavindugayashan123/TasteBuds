@@ -24,7 +24,7 @@ app.use(logger);
 app.use("/api/outlets",outletRouter)
 app.use("/api/foods",foodRouter)
 app.use("/api/wishList",wishList)
-//app.use("/api/outlets", outletRouter);
+
 
 
 app.listen(PORT, () => {
