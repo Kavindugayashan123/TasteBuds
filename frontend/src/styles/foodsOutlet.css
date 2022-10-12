@@ -25,10 +25,12 @@
 }
 
 .outlet-btn{
+    padding: 5px;
     width: max-content;
     background-color: transparent;
     margin-bottom: 10px;
     font-weight: bold;
+    border: none;
 }
 
 .outlet-btn svg{
