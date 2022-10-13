@@ -52,9 +52,7 @@ const FoodOutlet = ({ item }) => {
       <div className="card-footer">
         <button
           onClick={() => {
-            // addToWhistList();
             addToWishHandler();
-            //ChangeColor();
           }}
         >
           <FontAwesomeIcon icon={faHeart} />

@@ -8,6 +8,7 @@ import Login from "./pages/Login";
 import Wish from "./pages/Wish";
 import Cart from "./pages/Cart";
 import OutletScreen from "./pages/OutletScreen";
+import MapContainer from "./pages/Map";
 
 function App() {
   return (
@@ -22,6 +23,7 @@ function App() {
           <Route path='/outlet' element={ <Outlet />}/>
           <Route path='/about' element={ <About />}/>
           <Route path='/contact' element={ <Contact />}/>
+          <Route path='/MapContainer' element={ <MapContainer />}/>
         </Routes>
        
       </div>

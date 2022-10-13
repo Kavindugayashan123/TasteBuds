@@ -27,8 +27,6 @@ router.post("/", async (req, res) => {
 router.get("/", async (req, res) => {
   try {
     let outlets = await Outlet.find();
-    //let outlets = await Outlet.find(property: true).sort(name: "asc");
-    //(dob: {$gt: 1900})
     res.send(outlets);
   } catch (err) {
     return res.status(500).send(`Error: ${err.message}`);
