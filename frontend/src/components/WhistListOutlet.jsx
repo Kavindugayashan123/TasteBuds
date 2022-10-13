@@ -1,5 +1,5 @@
 import React, { useState } from "react";
-import { faHeart, faShoppingBag, faTrashAlt } from "@fortawesome/free-solid-svg-icons";
+import { faShoppingBag, faTrashAlt } from "@fortawesome/free-solid-svg-icons";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { Link } from "react-router-dom";
 import "../styles/foodOutlet.css";
