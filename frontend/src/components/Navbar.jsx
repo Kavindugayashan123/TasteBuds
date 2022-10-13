@@ -29,7 +29,7 @@ const Navbar = () => {
     <div className="n-container">
       <div className="n-row">
         <div className="n-col">
-          <span className="n-email">nadiya@gmail.com</span>
+          <span className="n-email">Anupama@gmail.com</span>
           <span className="n-email">
             <FontAwesomeIcon icon={faUser} /> Guest
           </span>
