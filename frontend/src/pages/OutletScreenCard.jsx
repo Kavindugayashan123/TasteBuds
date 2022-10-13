@@ -6,14 +6,18 @@ import Navbar from "../components/Navbar";
 import "../styles/outletScreenCard.css";
 import axios from "axios";
 import ProductHome from "../components/ProductHome";
-import { Button, Card, Typography, CardActionArea, CardMedia, CardContent, CardActions } from "@material-ui/core";
 import { TransformWrapper, TransformComponent } from "react-zoom-pan-pinch";
 import { Store } from "../Store";
+import MapContainer from "../components/MapContainer";
+import Banners from "../components/Banners";
+import { faArrowRightArrowLeft, faCheck, faPhoneVolume, faTruckFast } from "@fortawesome/free-solid-svg-icons";
+import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 
 const OutletScreenCard = ({ foodoutlet }) => {
   const [selectedImage, setSelectedImage] = useState("");
   const [outletFoods, setOutletFood] = useState([]);
   const { state, dispatch: ctxDispatch } = useContext(Store);
+  const { wish } = state;
 
   useEffect(() => {
     const fetchData = async () => {
@@ -22,8 +26,31 @@ const OutletScreenCard = ({ foodoutlet }) => {
     };
     fetchData();
   }, [foodoutlet]);
-  console.log("Food Items SS :", foodoutlet._id);
-  console.log("Food Items =======>>", outletFoods);
+
+  const addToWishHandler = () => {
+    const existItem = wish.wishItems.find((x) => x._id === foodoutlet._id);
+    const quantity = existItem ? existItem.quantity : 1;
+
+    if (existItem) {
+      window.alert("Outlet is already in whistList");
+      return;
+    } else {
+      const addToWhistList = () => {
+        const fetchData = async () => {
+          const data = await axios.post("/api/wishList/addItems", {
+            userId: "001112244",
+            outLetId: foodoutlet._id,
+          });
+        };
+        fetchData();
+      };
+      // addToWhistList();
+    }
+    ctxDispatch({
+      type: "WISH_ADD_ITEM",
+      payload: { ...foodoutlet, quantity },
+    });
+  };
 
   return (
     <>
@@ -57,14 +84,41 @@ const OutletScreenCard = ({ foodoutlet }) => {
             </div>
             <div className="second-div div">
               <span className="price">Rate: {foodoutlet.rate}</span>
-              <div className="quantity">Quantity: 1</div>
+
+              <div className="b-row">
+                <div className="b-col">
+                  <FontAwesomeIcon icon={faCheck} />
+                  <span> Fresh Food</span>
+                </div>
+                <div className="b-col">
+                  <FontAwesomeIcon icon={faTruckFast} />
+                  <span> Free Shipping</span>
+                </div>
+              </div>
+              <div className="b-row">
+                <div className="b-col">
+                  <FontAwesomeIcon icon={faArrowRightArrowLeft} />
+                  <span> Return</span>
+                </div>
+                <div className="b-col">
+                  <FontAwesomeIcon icon={faPhoneVolume} />
+                  <span> Support</span>
+                </div>
+              </div>
             </div>
             <div className="third-div div">
               <p className="desc">{foodoutlet.description}</p>
             </div>
             <div className="fourth-div div">
               <button className="cart">Add to Cart</button>
-              <button className="wish">Add to Wish</button>
+              <button
+                onClick={() => {
+                  addToWishHandler();
+                }}
+                className="wish"
+              >
+                Add to Wish
+              </button>
             </div>
           </div>
         </div>
@@ -76,35 +130,7 @@ const OutletScreenCard = ({ foodoutlet }) => {
           ))}
         </div>
       </div>
-
-      {/*  <div aria-rowcount>
-               <Card sx={{ maxWidth: 345 }}>
-                <CardActionArea>
-                  <CardMedia
-                    component="img"
-                    height="140"
-                    image="/static/images/cards/contemplative-reptile.jpg"
-                    alt="green iguana"
-                  />
-                  <CardContent>
-                    <Typography gutterBottom variant="h5" component="div">
-                      Lizard
-                    </Typography>
-                    <Typography variant="body2" color="text.secondary">
-                      Lizards are a widespread group of squamate reptiles, with
-                      over 6,000 species, ranging across all continents except
-                      Antarctica
-                    </Typography>
-                  </CardContent>
-                </CardActionArea>
-                <CardActions>
-                  <Button size="small" color="primary">
-                    Share
-                  </Button>
-                </CardActions>
-              </Card>
-            </div> */}
-
+      <MapContainer />
       <Footer />
     </>
   );

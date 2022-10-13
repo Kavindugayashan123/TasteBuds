@@ -1,4 +1,4 @@
-import React from "react";
+import React, { useState } from "react";
 import { faHeart, faShoppingBag, faTrashAlt } from "@fortawesome/free-solid-svg-icons";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { Link } from "react-router-dom";
@@ -7,16 +7,20 @@ import axios from "axios";
 
 const WhistListOutlet = ({ item }) => {
   let userId = "001112244";
+  const [Foodoutlet, setFoodoutlet] = useState(item);
 
   const removeOutletHandler = () => {
-    const removeOutlet = () => {
-      const fetchData = async () => {
-        const data = await axios.delete(`api/wishList/deleteFood/${userId}/${item._id}`);
-      };
-      fetchData();
+    //const removeOutlet = () => {
+    const fetchData = async () => {
+      const data = await axios.delete(`api/wishList/deleteFood/${userId}/${item._id}`);
+      if (data) {
+        window.location.reload(false);
+      }
+      //  };
     };
-    removeOutlet();
+    fetchData();
   };
+
   return (
     <div className="fo-card">
       <div className="card-header">
