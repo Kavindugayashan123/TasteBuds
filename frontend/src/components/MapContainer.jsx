@@ -1,4 +1,3 @@
-import { Map, GoogleApiWrapper } from "google-maps-react";
 import { useMemo } from "react";
 import React from "react";
 import "../styles/map.css";
