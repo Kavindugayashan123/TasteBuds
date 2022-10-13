@@ -21,6 +21,7 @@ mongoose
 app.use(express.json());
 app.use(authencator);
 app.use(logger);
+
 app.use("/api/outlets",outletRouter)
 app.use("/api/foods",foodRouter)
 app.use("/api/wishList",wishList)

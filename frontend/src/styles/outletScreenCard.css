@@ -1,15 +1,15 @@
 .screen-container {
-    min-height: 100vh;
+    min-height: 100%;
 }
 
 .screen-row{
     display: flex;
-    min-height: 100vh;
+    min-height: 10vh;
 }
 
 .screen-col{
-    min-height: 100vh;
-    padding: 81px 10px;
+    height: 100%;
+    padding: 10px;
 }
 
 .screen-col:first-child{
@@ -28,7 +28,8 @@
 }
 
 .screen-top img{
-    width: 400px;
+    width: 250px;
+    padding: 20px 0 0 0;
 }
 
 .screen-top {
@@ -37,8 +38,8 @@
 }
 
 .screen-bottom{
-    margin-top: 10px;
-    display: flex;
+    margin-top: 2px;
+    display: none;
     justify-content: space-around    
 }
 
@@ -63,11 +64,11 @@
 }
 
 .outlet-card{
-    margin-top: -286px;
+   
     display: flex;
     justify-content: center;
     flex-wrap: wrap;
-    margin-bottom: 30px;
+    
 }
 
 .quantity{ 

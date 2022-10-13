@@ -14,6 +14,7 @@ export const Home = () => {
       <Banners />
       <CategoryMain />
       <ProductsHome />
+      
       <Footer />
     </div>
   );

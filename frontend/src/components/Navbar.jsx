@@ -12,10 +12,21 @@ import WhistList from "./WhistList";
 import { useState } from "react";
 import { Store } from "../Store";
 import { useContext } from "react";
+import axios from "axios";
+//const [user, setUser] = useState([]);
 
 const Navbar = () => {
   const { state } = useContext(Store);
   const { wish } = state;
+  const [user, setUser] = useState([]);
+
+  // const uData=()=>{
+  //   const fetchUsers= async() =>{
+  //     const results= await axios.get('https://ipinfo.io/json?token=d66f538fe264d9')
+  //     setUser(results.data);
+  //   };
+  //   fetchUsers();
+  // };
 
   return (
     <div className="n-container">
@@ -24,6 +35,14 @@ const Navbar = () => {
           <span className="n-email">nadiya@gmail.com</span>
           <span className="n-email">
             <FontAwesomeIcon icon={faUser} /> Guest
+            {async function fetchUser() {
+              let url = "https://ipinfo.io/json?token=d66f538fe264d9";
+              let res = await fetch(url);
+              let data = await res.json();
+              console.log(data);
+              
+            }}
+           
           </span>
         </div>
         <div className="n-col">

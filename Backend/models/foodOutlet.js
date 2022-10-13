@@ -7,11 +7,20 @@ const outletSchema = new mongoose.Schema({
     required: true,
     unique: true,
   },
-  address: String,
+  address: {
+    type: String,
+    required: true,
+  },
   rate: Number,
-  description: String,
+  description: {
+    type: String,
+    required: true,
+  },
   location: String,
-  imgUrl: String,
+  imgUrl: {
+    type: String,
+    required: true,
+  },
 });
 const Outlet = mongoose.model("Outlet", outletSchema);
 module.exports = Outlet;

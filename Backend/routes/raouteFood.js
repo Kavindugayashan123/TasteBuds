@@ -2,6 +2,7 @@ const e = require("express");
 const express = require("express");
 const Food = require("../models/food");
 const router = express.Router();
+const checkingFoods = require("../middleware/checkFoods");
 
 router.post("/", async (req, res) => {
   if (!req.body.name || !req.body.outletId) {
@@ -26,7 +27,7 @@ router.post("/", async (req, res) => {
   res.send(food);
 });
 
-router.get("/", async (req, res) => {
+router.get("/", checkingFoods,async (req, res) => {
   try {
     let foods = await Food.find();
     res.send(foods);

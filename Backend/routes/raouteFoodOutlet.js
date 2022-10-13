@@ -1,7 +1,9 @@
 const express = require("express");
 const Outlet = require("../models/foodOutlet");
 const foods = require("../models/food");
+const checkingOutlets = require("../middleware/checkOutlets");
 const router = express.Router();
+
 
 router.post("/", async (req, res) => {
   if (!req.body.name) {
@@ -24,16 +26,16 @@ router.post("/", async (req, res) => {
   res.send(outlet);
 });
 
-router.get("/", async (req, res) => {
+router.get("/", checkingOutlets,async (req, res) => {
   try {
     let outlets = await Outlet.find();
-    //let outlets = await Outlet.find(property: true).sort(name: "asc");
-    //(dob: {$gt: 1900})
     res.send(outlets);
   } catch (err) {
     return res.status(500).send(`Error: ${err.message}`);
   }
 });
+
+
 
 router.get("/:outletId", async (req, res) => {
   let reqId = req.params.outletId;
