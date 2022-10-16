@@ -25,6 +25,7 @@ const ProductHome = ({ item, index, isCart }) => {
   //     payload: { ...item, quantity: 1 },
   //   });
   // };
+
   const addToCartHandler = () => {
     addItemToCart(item);
   };

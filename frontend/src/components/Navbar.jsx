@@ -12,11 +12,12 @@ import WhistList from "./WhistList";
 import { useState } from "react";
 import { Store } from "../Store";
 import { useContext } from "react";
+import { readCart } from "../services/cartService";
 
 const Navbar = () => {
   const { state } = useContext(Store);
   const { wish } = state;
-import { readCart } from "../services/cartService";
+
 
 const Navbar = () => {
   const [cartItemCount, setCartItemCount] = useState(0);
@@ -110,6 +111,7 @@ const Navbar = () => {
       </div>
     </div>
   );
+};
 };
 
 export default Navbar;
