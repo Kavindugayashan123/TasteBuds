@@ -10,7 +10,7 @@
     "node",
     "express"
   ],
-  "author": "nadiya",
+  "author": "Anupama",
   "license": "ISC",
   "dependencies": {
     "body-parser": "^1.20.0",
