@@ -1,10 +1,16 @@
-import React from 'react'
-import Navbar from '../components/Navbar'
+import React from "react";
+import LGForm from "../components/LGForm";
+import Navbar from "../components/Navbar";
+import Footer from "../components/Footer";
 
 const Login = () => {
   return (
-    <div><Navbar />Login</div>
-  )
-}
+    <div>
+      <Navbar />
+      <LGForm />
+      <Footer />
+    </div>
+  );
+};
 
-export default Login
+export default Login;

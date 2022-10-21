@@ -16,13 +16,7 @@ const ProductHome = ({ item }) => {
 
   const { state, dispatch: ctxDispatch } = useContext(Store);
 
-  // const addToWishHandler = () => {
-  //   ctxDispatch({
-  //     type: "WISH_ADD_ITEM",
-  //     payload: { ...item, quantity: 1 },
-  //   });
-  // };
-
+ 
   return (
     <div className="hp-card">
       <div className="card-header">

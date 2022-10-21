@@ -11,7 +11,7 @@ function CategoryMain() {
             <img src={item.image} alt="" />
             <div className="category-content">
               <p>{item.title}</p>
-              <button className='c-btn'>Buy Now</button>
+              <button className='c-btn' onClick={event =>  window.location.href='/outlet'}>Buy Now</button>
             </div>
           </div>
         ))}
