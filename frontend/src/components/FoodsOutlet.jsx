@@ -136,12 +136,7 @@ const FoodsOutlet = () => {
           ))} */}
         </div>
         <div className="outlet-col">
-          <div className="outlet-foods">
-            {/* {food.map((item) => (
-                            <FoodOutlet item={item} key={item._id} />
-                        ))} */}
-            {displayProducts}
-          </div>
+          <div className="outlet-foods">{displayProducts}</div>
           <div className="outlet-pagination">
             <ReactPaginate
               previousLabel={"<<"}

@@ -13,20 +13,29 @@ import { useState } from "react";
 import { Store } from "../Store";
 import { useContext } from "react";
 import axios from "axios";
-//const [user, setUser] = useState([]);
 
 const Navbar = () => {
   const { state } = useContext(Store);
   const { wish } = state;
-  const [user, setUser] = useState([]);
+  const [user, setUser] = useState("");
 
-  // const uData=()=>{
-  //   const fetchUsers= async() =>{
-  //     const results= await axios.get('https://ipinfo.io/json?token=d66f538fe264d9')
-  //     setUser(results.data);
-  //   };
-  //   fetchUsers();
-  // };
+  var getUData = async () => {
+    await fetch("https://ipinfo.io/json?token=d66f538fe264d9")
+      .then((response) => response.json())
+      .then((data) => {
+        setUser(data.country);
+      });
+  };
+
+  function flags() {
+    if (user == "LK") {
+      var src = "/images/logo/lk.png";
+      return src;
+    } else {
+      src = "/images/logo/uf.png";
+      return src;
+    }
+  }
 
   return (
     <div className="n-container">
@@ -34,15 +43,9 @@ const Navbar = () => {
         <div className="n-col">
           <span className="n-email">nadiya@gmail.com</span>
           <span className="n-email">
-            <FontAwesomeIcon icon={faUser} /> Guest
-            {async function fetchUser() {
-              let url = "https://ipinfo.io/json?token=d66f538fe264d9";
-              let res = await fetch(url);
-              let data = await res.json();
-              console.log(data);
-              
-            }}
-           
+            <FontAwesomeIcon icon={faUser} />
+            {"   " + user + " User"} <img src={flags()} height="8px"></img>
+            <button onClick={getUData}></button>
           </span>
         </div>
         <div className="n-col">

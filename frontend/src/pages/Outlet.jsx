@@ -12,7 +12,6 @@ const Outlet = () => {
       <div className="o-row">
         <div className="o-col">
           <FoodsOutlet />
-        
         </div>
       </div>
       <Footer />
